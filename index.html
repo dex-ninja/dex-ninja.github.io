@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <title>DexNinja: Learning Robust Dexterous Cutting Policy with a Real-to-Sim-to-Real Data Engine</title>
+  <meta name="description" content="DexNinja turns sparse real demonstrations into physically grounded simulation data for visual–tactile dexterous food cutting. CoRL 2026.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="DexNinja — A Real-to-Sim-to-Real Data Engine for Dexterous Cutting">
+  <meta property="og:description" content="Learning to cut deformable food with vision, touch, and a few real demonstrations. CoRL 2026.">
+  <meta property="og:url" content="https://dex-ninja.github.io/">
+  <link rel="canonical" href="https://dex-ninja.github.io/">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232d659d'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Arial,sans-serif' font-size='42' font-weight='700' fill='white'%3ED%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="static/css/site.css">
+  <script src="static/js/site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="hero" id="top">
+    <div class="container">
+      <p class="venue">Conference on Robot Learning · 2026</p>
+      <h1><span class="project-name">DexNinja</span><span class="title-rest">Learning Robust Dexterous Cutting Policy<br class="desktop-break"> with a Real-to-Sim-to-Real Data Engine</span></h1>
+      <div class="authors" aria-label="Authors">
+        <span>Haozhe Lou<sup>1,*</sup></span><span>Runyi Yang<sup>2,*</sup></span><span>Wanqi Zhong<sup>1</sup></span><span>Caiyun Liu<sup>3</sup></span>
+        <span>Yicheng Liu<sup>4</sup></span><span>Wenhao Liu<sup>5</sup></span><span>Wenlong Ma<sup>6</sup></span><span>Jiawei Xia<sup>7</sup></span><span>Kanzhi Wu<sup>8</sup></span>
+        <span>Danda Pani Paudel<sup>2</sup></span><span>Luc Van Gool<sup>2</sup></span><span>Hang Zhao<sup>4</sup></span><span>Yiming Li<sup>1</sup></span>
+      </div>
+      <div class="affiliations">
+        <span><sup>1</sup>College of AI, Tsinghua University</span><span><sup>2</sup>INSAIT, Sofia University “St. Kliment Ohridski”</span>
+        <span><sup>3</sup>Peking University</span><span><sup>4</sup>IIIS, Tsinghua University</span><span><sup>5</sup>University of Southern California</span>
+        <span><sup>6</sup>Beijing Institute of Technology</span><span><sup>7</sup>University of California, Berkeley</span><span><sup>8</sup>vivo Mobile Communication Co., Ltd.</span>
+      </div>
+      <p class="equal-contribution">* Equal contribution</p>
+      <div class="resource-links">
+        <span class="resource unavailable" aria-label="Paper, coming soon"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6zM14 3v5h4M9 12h6M9 16h6"/></svg>Paper <small>Coming soon</small></span>
+        <span class="resource unavailable" aria-label="Code, coming soon"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-13-2 16"/></svg>Code <small>Coming soon</small></span>
+        <a class="resource" href="#video"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 11 7-11 7z"/></svg>Video</a>
+      </div>
+      <nav class="section-nav" aria-label="Page sections"><a href="#method">Method</a><a href="#results">Results</a><a href="#citation">BibTeX</a></nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="teaser container" aria-labelledby="teaser-title">
+      <h2 id="teaser-title" class="teaser-headline">A few real demonstrations.<br><span>A world of physically grounded practice.</span></h2>
+      <div class="demo-grid">
+        <figure><video class="demo-video" muted loop playsinline preload="metadata" poster="static/images/strawberry-poster.webp" aria-label="Real-world strawberry cutting demonstration, shown at four times speed"><source src="static/videos/strawberry.mp4" type="video/mp4"></video><figcaption><strong>Strawberry</strong><span>Real-world cutting · 4×</span></figcaption></figure>
+        <figure><video class="demo-video" muted loop playsinline preload="metadata" poster="static/images/banana-poster.webp" aria-label="Real-world banana cutting demonstration, shown at four times speed"><source src="static/videos/banana.mp4" type="video/mp4"></video><figcaption><strong>Banana</strong><span>Real-world cutting · 4×</span></figcaption></figure>
+        <figure><video class="demo-video" muted loop playsinline preload="metadata" poster="static/images/lemon-poster.webp" aria-label="Real-world lemon cutting on a second robot setup, shown at eight times speed"><source src="static/videos/lemon.mp4" type="video/mp4"></video><figcaption><strong>Lemon</strong><span>A second robot setup · 8×</span></figcaption></figure>
+      </div>
+      <div class="teaser-footer"><p><strong>DexNinja</strong> learns to stabilize and slice deformable food through real-to-sim-to-real data densification and visual–tactile control.</p><button class="text-button" id="motion-toggle" type="button" aria-pressed="false" hidden>Pause demos</button></div>
+    </section>
+
+    <section class="section soft-section" id="abstract">
+      <div class="reading-width">
+        <h2>Abstract</h2>
+        <p>Cutting a piece of food looks effortless in human hands. For a robot, every cut is a contact-rich interaction with a deformable object whose behavior changes with pose, material properties, and cutting stage. Real-world data collection is expensive and destructive, while simulation must bridge gaps in both physics and perception.</p>
+        <p>We present <strong>DexNinja</strong>, a real-to-sim-to-real framework that turns a small set of real demonstrations into a dense, physically grounded training distribution. DexNinja reconstructs food instances from real captures, generates category-consistent variations in geometry and appearance, and randomizes physically meaningful parameters. A differentiable cutting simulator produces feasible trajectories and aligned visual, tactile, and proprioceptive observations. An ACT-style policy separates arm and hand control and adapts its action horizon to the manipulation stage.</p>
+        <p>Across four food categories, combining real demonstrations with simulated data improves real-world cutting success from <strong>31% to 50%</strong> in the main experiment. A separate scaling study reaches <strong>63%</strong> with 300 simulated episodes. These results demonstrate the value of data densification for generalization to unseen instances within a food category.</p>
+      </div>
+    </section>
+
+    <section class="section container" id="video">
+      <div class="section-heading"><h2>See DexNinja in action</h2><p>From real demonstrations to simulation, policy learning, and real-world deployment.</p></div>
+      <video id="paper-video" class="presentation-video" controls playsinline preload="none" poster="static/images/video-poster.webp" aria-label="DexNinja narrated research presentation">
+        <source src="static/videos/dexninja.mp4" type="video/mp4">
+        <track kind="chapters" src="static/videos/chapters.vtt" srclang="en" label="Chapters">
+        Your browser does not support embedded video. <a href="static/videos/dexninja.mp4">Download the video.</a>
+      </video>
+      <div class="video-chapters" aria-label="Video chapters" hidden><button type="button" data-time="0"><span>00:00</span>Motivation</button><button type="button" data-time="30"><span>00:30</span>Pipeline</button><button type="button" data-time="120"><span>02:00</span>Policy learning</button><button type="button" data-time="150"><span>02:30</span>Experiments</button><button type="button" data-time="252"><span>04:12</span>Deployment</button></div>
+      <p class="media-note">Narrated presentation · 4 min 57 sec · <a href="static/videos/dexninja.mp4" download>Download video</a></p>
+    </section>
+
+    <section class="section soft-section" id="method">
+      <div class="container">
+        <div class="section-heading"><p class="eyebrow">The data engine</p><h2>Real → Sim → Real</h2><p>Keep the demonstration grounded in reality. Expand its neighborhood in simulation.</p></div>
+        <figure class="paper-figure overview-figure"><a href="static/images/overview.webp" class="figure-zoom" aria-label="Enlarge the DexNinja pipeline figure"><img src="static/images/overview.webp" width="2000" height="1045" alt="DexNinja overview: real-world teleoperation and multimodal sensing, differentiable cutting simulation, and knowledge-guided generation of category-consistent 3D food assets." loading="lazy"></a><figcaption>The real-to-sim-to-real data engine, from the paper. Select any method figure to view it at full size.</figcaption></figure>
+        <div class="stages">
+          <article><span class="stage-number">01</span><h3>Capture &amp; reconstruct</h3><p>Record synchronized vision, touch, and robot state. Reconstruct the food at metric scale and register the object and knife in a shared coordinate frame.</p></article>
+          <article><span class="stage-number">02</span><h3>Densify in simulation</h3><p>Vary geometry, appearance, and material parameters within the food category. Refine cutting trajectories and retain rollouts that pass feasibility and cutting checks.</p></article>
+          <article><span class="stage-number">03</span><h3>Learn &amp; deploy</h3><p>Train on real and simulated episodes. Separate arm and hand prediction, then use shorter action chunks when tactile feedback matters most.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="densification">
+      <div class="section-heading"><h2>More diversity, anchored to real data</h2><p>Successful demonstrations define the starting point for local shape variation and motion correction.</p></div>
+      <figure class="paper-figure"><a href="static/images/augmentation.webp" class="figure-zoom" aria-label="Enlarge the local continuation figure"><img src="static/images/augmentation.webp" width="2000" height="356" alt="Local continuation along a shape manifold: start from a real observation, approximate its action neighborhood, fit a local corrective policy, and sample nearby food instances." loading="lazy"></a><figcaption>Local continuation adapts a successful motion to nearby instances on a category-specific shape family.</figcaption></figure>
+      <div class="two-column text-and-figure">
+        <div><h3>Controlled variation, checked for feasibility</h3><p>Category and attribute descriptions guide the generation of new food assets. Candidates are checked for semantic and multi-view consistency, metric scale, valid geometry, and stable simulation.</p><p>The asset pipeline yields <strong>1,200 accepted assets</strong> across strawberry, apple, banana, and potato, from 1,670 proposals. Simulated episodes also pass inverse-kinematics, collision, and cutting-success checks.</p></div>
+        <figure class="paper-figure"><a href="static/images/domain.webp" class="figure-zoom" aria-label="Enlarge the category variation figure"><img src="static/images/domain.webp" width="2000" height="818" alt="Strawberry appearance and shape variations alongside six real-world strawberry varieties." loading="lazy"></a><figcaption>Variation in shape, color, texture, and appearance within a food category.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="section soft-section" id="policy">
+      <div class="container">
+        <div class="section-heading"><p class="eyebrow">Learning to coordinate motion and contact</p><h2>Different actions. Different time scales.</h2><p>The arms align the tool. The hands regulate contact as the food deforms.</p></div>
+        <figure class="paper-figure"><a href="static/images/policy.webp" class="figure-zoom" aria-label="Enlarge the policy architecture"><img src="static/images/policy.webp" width="2000" height="674" alt="Separate ACT-style transformer policies predict arm and dexterous-hand actions, with variable action chunk sizes and a real-world execution sequence." loading="lazy"></a><figcaption>Separate arm and hand prediction with stage-conditioned, adaptive action chunking.</figcaption></figure>
+        <div class="horizon-row" aria-label="Nominal action chunk horizons"><div><strong>64</strong><span>Approach &amp; grasp</span></div><div><strong>128</strong><span>Knife positioning</span></div><div class="contact-stage"><strong>16</strong><span>Tactile-guided cutting</span></div></div>
+        <p class="media-note">Nominal chunk lengths in action steps; shorter chunks allow more frequent feedback during cutting.</p>
+        <div class="two-column text-and-figure tactile-row">
+          <figure class="paper-figure"><a href="static/images/tactile.webp" class="figure-zoom" aria-label="Enlarge the tactile sensing figure"><img src="static/images/tactile.webp" width="2000" height="806" alt="Real-world strawberry and apple cutting paired with tactile vector fields showing how contact changes over time." loading="lazy"></a><figcaption>Touch reveals changing contact during deformation and cutting.</figcaption></figure>
+          <div><h3>Touch helps preserve the food</h3><p>Tactile observations inform contact-sensitive hand control. In the matched-budget ablation, removing tactile observations reduces food integrity from <strong>60% to 45%</strong> and cutting success from <strong>50% to 43%</strong>.</p><p>Local cutting dynamics and the articulated robot simulator are connected through the knife: its trajectory and contact wrench form the interface between the two simulation layers.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="results">
+      <div class="section-heading"><p class="eyebrow">Real-world evaluation</p><h2>Real and simulated data work better together</h2><p>Four food categories. Twenty-five held-out trials per category and training regime.</p></div>
+      <div class="result-highlights"><div><strong>50<span>%</span></strong><p>Main experiment success</p></div><div><strong>+19<span> pp</span></strong><p>Over real-only training</p></div><div><strong>63<span>%</span></strong><p>Separate 300-episode scaling study</p></div></div>
+      <div class="result-explorer">
+        <div class="result-toolbar"><div class="metric-controls" role="group" aria-label="Evaluation metric" hidden><button type="button" data-metric="success" aria-pressed="true">Success</button><button type="button" data-metric="progress" aria-pressed="false">Progress</button><button type="button" data-metric="integrity" aria-pressed="false">Integrity</button></div><label class="food-control" hidden>Food <select id="food-select"><option value="all">All four foods</option><option value="strawberry">Strawberry</option><option value="apple">Apple</option><option value="banana">Banana</option><option value="potato">Potato</option></select></label></div>
+        <p id="metric-description" class="metric-description">Success: the cut fully traverses the food, producing separable halves with a safe termination.</p>
+        <div class="bars" aria-label="Cutting success by training regime">
+          <div class="bar-row"><span class="bar-label">Sim-only</span><div class="bar-track"><div class="bar-fill sim" style="width:34%"></div></div><strong class="bar-value">34%</strong><span class="bar-count">34 / 100</span></div>
+          <div class="bar-row"><span class="bar-label">Real-only</span><div class="bar-track"><div class="bar-fill real" style="width:31%"></div></div><strong class="bar-value">31%</strong><span class="bar-count">31 / 100</span></div>
+          <div class="bar-row"><span class="bar-label">Sim + Real <small>DexNinja</small></span><div class="bar-track"><div class="bar-fill ours" style="width:50%"></div></div><strong class="bar-value">50%</strong><span class="bar-count">50 / 100</span></div>
+        </div>
+        <p id="result-summary" class="result-summary" aria-live="polite">Sim + Real improves success by 19 percentage points over Real-only across all four foods.</p>
+        <p class="protocol-note">Main protocol: 5 real demonstrations and 50 simulated sequences per instance. Each regime is evaluated over 100 real-world trials.</p>
+      </div>
+      <details class="results-details"><summary>View the complete main-results table</summary><div class="table-scroll" tabindex="0" role="region" aria-label="Main results table"><table><caption>Real-world results, 25 trials per food. Each cell reports Progress / Success / Integrity.</caption><thead><tr><th scope="col">Food</th><th scope="col">Sim-only</th><th scope="col">Real-only</th><th scope="col">Sim + Real</th></tr></thead><tbody><tr><th scope="row">Strawberry</th><td>10 / 6 / 10</td><td>12 / 8 / 10</td><td>19 / 12 / 14</td></tr><tr><th scope="row">Apple</th><td>5 / 4 / 5</td><td>6 / 4 / 4</td><td>14 / 8 / 7</td></tr><tr><th scope="row">Banana</th><td>16 / 12 / 14</td><td>17 / 12 / 14</td><td>24 / 18 / 23</td></tr><tr><th scope="row">Potato</th><td>15 / 12 / 11</td><td>9 / 7 / 9</td><td>19 / 12 / 16</td></tr><tr class="total-row"><th scope="row">Total / 100</th><td>46 / 34 / 40</td><td>44 / 31 / 37</td><td>76 / 50 / 60</td></tr></tbody></table></div></details>
+      <div class="two-column additional-results">
+        <article><h3>Scaling simulated practice</h3><p>With the real dataset fixed, success improves as more simulated episodes are added.</p><div class="scaling-chart" aria-label="Success rates: 10 episodes 36%, 50 episodes 50%, 100 episodes 56%, 300 episodes 63%"><div><strong>36%</strong><span style="--value:36%"></span><small>10</small></div><div><strong>50%</strong><span style="--value:50%"></span><small>50</small></div><div><strong>56%</strong><span style="--value:56%"></span><small>100</small></div><div class="best"><strong>63%</strong><span style="--value:63%"></span><small>300</small></div></div><p class="media-note">Added simulated episodes · 100 real-world trials per setting</p></article>
+        <article><h3>What matters most?</h3><p>Matched-budget component ablations isolate the value of refinement, touch, and asset diversity.</p><table class="ablation-table"><caption class="sr-only">Component ablation success rates across 100 trials</caption><thead><tr><th scope="col">Variant</th><th scope="col">Success</th></tr></thead><tbody><tr class="total-row"><th scope="row">Full DexNinja</th><td>50%</td></tr><tr><th scope="row">Without quality control</th><td>46%</td></tr><tr><th scope="row">Without physical randomization</th><td>44%</td></tr><tr><th scope="row">Without tactile observations</th><td>43%</td></tr><tr><th scope="row">Without generated assets</th><td>42%</td></tr><tr><th scope="row">Without trajectory refinement</th><td>39%</td></tr></tbody></table></article>
+      </div>
+    </section>
+
+    <section class="section soft-section" id="multi-cut">
+      <div class="container"><div class="section-heading"><h2>Beyond a single cut</h2><p>Repeated cutting introduces new geometry, new contacts, and accumulated error.</p></div>
+        <figure class="paper-figure"><a href="static/images/multi-cut.webp" class="figure-zoom" aria-label="Enlarge the repeated lemon-cutting figure"><img src="static/images/multi-cut.webp" width="2000" height="257" alt="Real-world lemon experiments: a single cut succeeds in 8 of 10 trials, two cuts in 7 of 10, and multiple cuts in 3 of 10, with hand adjustment between cuts." loading="lazy"></a><figcaption>Lemon experiments: 8/10 for a single cut, 7/10 for two cuts, and 3/10 for multiple cuts.</figcaption></figure>
+        <div class="reading-width discussion"><p>DexNinja handles heterogeneous food and repeated cutting, but performance decreases as manipulation becomes more complex. In the main experiment, grasp/contact control and cutting-physics mismatch account for 19 and 17 of the 50 failed trials, respectively.</p><p><strong>Current scope.</strong> Policies are category-specific and use a mounted camera. New food categories require new assets and retraining or fine-tuning. The second robot setup provides qualitative evidence of portability across embodiments.</p></div>
+      </div>
+    </section>
+
+    <section class="section reading-width" id="citation">
+      <div class="citation-heading"><h2>BibTeX</h2><button id="copy-citation" class="copy-button" type="button" hidden>Copy citation</button></div>
+      <pre><code id="bibtex">@inproceedings{lou2026dexninja,
+  title     = {DexNinja: Learning Robust Dexterous Cutting Policy
+               with a Real-to-Sim-to-Real Data Engine},
+  author    = {Lou, Haozhe and Yang, Runyi and Zhong, Wanqi and
+               Liu, Caiyun and Liu, Yicheng and Liu, Wenhao and
+               Ma, Wenlong and Xia, Jiawei and Wu, Kanzhi and
+               Paudel, Danda Pani and Van Gool, Luc and
+               Zhao, Hang and Li, Yiming},
+  booktitle = {Conference on Robot Learning},
+  year      = {2026},
+  url       = {https://dex-ninja.github.io/}
+}</code></pre><p class="media-note">Paper and code links will be added after release.</p><span id="copy-status" class="sr-only" role="status"></span>
+    </section>
+  </main>
+
+  <footer><div class="reading-width"><p>DexNinja · CoRL 2026</p><p>Website design inspired by <a href="https://nerfies.github.io/">Nerfies</a>. Figures and videos from the DexNinja authors.</p><a class="back-to-top" href="#top">Back to top</a></div></footer>
+  <dialog id="figure-dialog" aria-label="Enlarged paper figure"><button id="close-figure" type="button" aria-label="Close enlarged figure">Close <span aria-hidden="true">×</span></button><img id="enlarged-figure" alt=""><p id="figure-caption"></p></dialog>
+</body>
+</html>
