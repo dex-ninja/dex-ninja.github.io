@@ -207,7 +207,10 @@ h1 {
   border-radius:7px}
 .demo-grid figcaption {
   display:flex;
-  flex-direction:column;
+  justify-content:center;
+  align-items:baseline;
+  flex-wrap:wrap;
+  gap:6px;
   text-align:center;
   margin-top:11px;
   font-size:.87rem}
@@ -216,19 +219,8 @@ h1 {
   color:var(--ink)}
 .demo-grid figcaption span {
   color:var(--muted);
-  font-size:.78rem}
-.teaser-footer {
-  display:flex;
-  justify-content:center;
-  margin-top:15px}
-.text-button {
-  border:0;
-  padding:8px 0;
-  background:none;
-  color:var(--blue);
-  font-size:.84rem;
   white-space:nowrap;
-  min-height:44px}
+  font-size:.78rem}
 .reading-width>h2 {
   text-align:center;
   margin-bottom:24px}

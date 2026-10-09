@@ -39,26 +39,21 @@ document.querySelector('.food-control').hidden = false;
 
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 const demos = [...document.querySelectorAll('.demo-video')];
-const motionToggle = document.querySelector('#motion-toggle');
-let demosPaused = reducedMotion.matches;
 function syncDemos() {
-  motionToggle.textContent = demosPaused ? 'Play demos' : 'Pause demos';
-  motionToggle.setAttribute('aria-pressed', String(demosPaused));
   demos.forEach(video => {
-    if (demosPaused || document.hidden) video.pause();
+    video.controls = reducedMotion.matches;
+    if (reducedMotion.matches || document.hidden) video.pause();
     else if (video.dataset.visible === 'true') video.play().catch(() => { video.controls = true; });
   });
 }
 const observer = new IntersectionObserver(entries => entries.forEach(entry => {
   const video = entry.target;
   video.dataset.visible = String(entry.isIntersecting);
-  if (entry.isIntersecting && !demosPaused && !document.hidden) video.play().catch(() => { video.controls = true; });
+  if (entry.isIntersecting && !reducedMotion.matches && !document.hidden) video.play().catch(() => { video.controls = true; });
   else video.pause();
 }), { threshold: 0.15 });
 demos.forEach(video => observer.observe(video));
-motionToggle.hidden = false;
-motionToggle.addEventListener('click', () => { demosPaused = !demosPaused; syncDemos(); });
-reducedMotion.addEventListener('change', () => { demosPaused = reducedMotion.matches; syncDemos(); });
+reducedMotion.addEventListener('change', syncDemos);
 document.addEventListener('visibilitychange', syncDemos);
 syncDemos();
 
