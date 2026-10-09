@@ -188,6 +188,11 @@ h1 {
 .tldr {
   max-width:900px;
   margin:0 auto 30px;
+  padding:24px 28px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:12px;
+  box-shadow:0 6px 24px rgb(30 45 65 / 10%);
   font-size:1.06rem;
   line-height:1.75}
 .demo-grid {
@@ -682,6 +687,7 @@ h2 {
 .teaser {
   padding-top:12px}
 .tldr {
+  padding:20px;
   font-size:1rem}
 .demo-grid {
   grid-template-columns:1fr 1fr;
