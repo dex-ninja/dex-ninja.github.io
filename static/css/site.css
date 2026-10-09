@@ -180,18 +180,16 @@ h1 {
   font-size:.88rem}
 .section-nav a {
   color:var(--muted)}
+.lead-video {
+  padding-bottom:28px}
 .teaser {
   padding-top:18px;
   padding-bottom:47px}
-.teaser-headline {
-  text-align:center;
-  font-size:1.5rem;
-  font-weight:500;
-  line-height:1.45;
-  letter-spacing:-.02em;
-  margin-bottom:24px}
-.teaser-headline span {
-  color:var(--muted)}
+.tldr {
+  max-width:900px;
+  margin:0 auto 30px;
+  font-size:1.06rem;
+  line-height:1.75}
 .demo-grid {
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -216,13 +214,8 @@ h1 {
   font-size:.78rem}
 .teaser-footer {
   display:flex;
-  align-items:center;
-  gap:25px;
-  margin-top:25px}
-.teaser-footer p {
-  max-width:870px;
-  font-size:1.06rem;
-  line-height:1.6}
+  justify-content:center;
+  margin-top:15px}
 .text-button {
   border:0;
   padding:8px 0;
@@ -648,8 +641,6 @@ dialog p {
   gap:10px}
 .demo-grid figcaption span {
   font-size:.72rem}
-.teaser-footer {
-  gap:18px}
 .bar-row {
   grid-template-columns:110px minmax(0,1fr) 45px 65px;
   gap:10px}
@@ -690,8 +681,8 @@ h2 {
   margin-top:18px}
 .teaser {
   padding-top:12px}
-.teaser-headline {
-  font-size:1.2rem}
+.tldr {
+  font-size:1rem}
 .demo-grid {
   grid-template-columns:1fr 1fr;
   gap:20px 12px}
@@ -703,13 +694,6 @@ h2 {
   font-size:.87rem}
 .demo-grid figcaption span {
   font-size:.74rem}
-.teaser-footer {
-  flex-direction:column;
-  gap:5px;
-  text-align:center;
-  margin-top:22px}
-.teaser-footer p {
-  font-size:1rem}
 .reading-width>p {
   text-align:left}
 .section-heading {

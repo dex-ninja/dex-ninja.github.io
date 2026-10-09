@@ -35,21 +35,31 @@
       <div class="resource-links">
         <span class="resource unavailable" aria-label="Paper, coming soon"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6zM14 3v5h4M9 12h6M9 16h6"/></svg>Paper <small>Coming soon</small></span>
         <span class="resource unavailable" aria-label="Code, coming soon"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-13-2 16"/></svg>Code <small>Coming soon</small></span>
-        <a class="resource" href="#video"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 11 7-11 7z"/></svg>Video</a>
       </div>
-      <nav class="section-nav" aria-label="Page sections"><a href="#method">Method</a><a href="#results">Results</a></nav>
     </div>
   </header>
 
   <main id="main">
+    <section class="lead-video container" id="video" aria-label="Research presentation">
+      <video id="paper-video" class="presentation-video" controls playsinline preload="none" poster="static/images/video-poster.webp" aria-label="DexNinja narrated research presentation">
+        <source src="static/videos/dexninja.mp4" type="video/mp4">
+        <track kind="chapters" src="static/videos/chapters.vtt" srclang="en" label="Chapters">
+        Your browser does not support embedded video. <a href="static/videos/dexninja.mp4">Download the video.</a>
+      </video>
+      <div class="video-chapters" aria-label="Video chapters" hidden><button type="button" data-time="0"><span>00:00</span>Motivation</button><button type="button" data-time="30"><span>00:30</span>Pipeline</button><button type="button" data-time="120"><span>02:00</span>Policy learning</button><button type="button" data-time="150"><span>02:30</span>Experiments</button><button type="button" data-time="252"><span>04:12</span>Deployment</button></div>
+      <p class="media-note">Narrated presentation · 4 min 57 sec · <a href="static/videos/dexninja.mp4" download>Download video</a></p>
+      <nav class="section-nav" aria-label="Page sections"><a href="#method">Method</a><a href="#results">Results</a></nav>
+    </section>
+
     <section class="teaser container" aria-labelledby="teaser-title">
-      <h2 id="teaser-title" class="teaser-headline">A few real demonstrations.<br><span>A world of physically grounded practice.</span></h2>
+      <h2 id="teaser-title" class="sr-only">DexNinja in brief</h2>
+      <p class="tldr"><strong>TL;DR:</strong> DexNinja is a real-to-sim-to-real data engine for dexterous food cutting. It densifies sparse real demonstrations by reconstructing food instances, generating category-consistent variations in geometry, appearance, and material properties, and adapting successful cutting motions in differentiable simulation. A visual–tactile policy trained on the combined real and simulated data improves real-world cutting on unseen instances within the same food category.</p>
       <div class="demo-grid">
         <figure><video class="demo-video" muted loop playsinline preload="metadata" poster="static/images/strawberry-poster.webp" aria-label="Real-world strawberry cutting demonstration, shown at four times speed"><source src="static/videos/strawberry.mp4" type="video/mp4"></video><figcaption><strong>Strawberry</strong><span>Real-world cutting · 4×</span></figcaption></figure>
         <figure><video class="demo-video" muted loop playsinline preload="metadata" poster="static/images/banana-poster.webp" aria-label="Real-world banana cutting demonstration, shown at four times speed"><source src="static/videos/banana.mp4" type="video/mp4"></video><figcaption><strong>Banana</strong><span>Real-world cutting · 4×</span></figcaption></figure>
         <figure><video class="demo-video" muted loop playsinline preload="metadata" poster="static/images/lemon-poster.webp" aria-label="Real-world lemon cutting on a second robot setup, shown at eight times speed"><source src="static/videos/lemon.mp4" type="video/mp4"></video><figcaption><strong>Lemon</strong><span>A second robot setup · 8×</span></figcaption></figure>
       </div>
-      <div class="teaser-footer"><p><strong>DexNinja</strong> learns to stabilize and slice deformable food through real-to-sim-to-real data densification and visual–tactile control.</p><button class="text-button" id="motion-toggle" type="button" aria-pressed="false" hidden>Pause demos</button></div>
+      <div class="teaser-footer"><button class="text-button" id="motion-toggle" type="button" aria-pressed="false" hidden>Pause demos</button></div>
     </section>
 
     <section class="section soft-section" id="abstract">
@@ -59,17 +69,6 @@
         <p>We present <strong>DexNinja</strong>, a real-to-sim-to-real framework that turns a small set of real demonstrations into a dense, physically grounded training distribution. DexNinja reconstructs food instances from real captures, generates category-consistent variations in geometry and appearance, and randomizes physically meaningful parameters. A differentiable cutting simulator produces feasible trajectories and aligned visual, tactile, and proprioceptive observations. An ACT-style policy separates arm and hand control and adapts its action horizon to the manipulation stage.</p>
         <p>Across four food categories, combining real demonstrations with simulated data improves real-world cutting success from <strong>31% to 50%</strong> in the main experiment. A separate scaling study reaches <strong>63%</strong> with 300 simulated episodes. These results demonstrate the value of data densification for generalization to unseen instances within a food category.</p>
       </div>
-    </section>
-
-    <section class="section container" id="video">
-      <div class="section-heading"><h2>See DexNinja in action</h2><p>From real demonstrations to simulation, policy learning, and real-world deployment.</p></div>
-      <video id="paper-video" class="presentation-video" controls playsinline preload="none" poster="static/images/video-poster.webp" aria-label="DexNinja narrated research presentation">
-        <source src="static/videos/dexninja.mp4" type="video/mp4">
-        <track kind="chapters" src="static/videos/chapters.vtt" srclang="en" label="Chapters">
-        Your browser does not support embedded video. <a href="static/videos/dexninja.mp4">Download the video.</a>
-      </video>
-      <div class="video-chapters" aria-label="Video chapters" hidden><button type="button" data-time="0"><span>00:00</span>Motivation</button><button type="button" data-time="30"><span>00:30</span>Pipeline</button><button type="button" data-time="120"><span>02:00</span>Policy learning</button><button type="button" data-time="150"><span>02:30</span>Experiments</button><button type="button" data-time="252"><span>04:12</span>Deployment</button></div>
-      <p class="media-note">Narrated presentation · 4 min 57 sec · <a href="static/videos/dexninja.mp4" download>Download video</a></p>
     </section>
 
     <section class="section soft-section" id="method">

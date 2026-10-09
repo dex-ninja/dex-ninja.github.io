@@ -19,6 +19,7 @@ Paper and code intentionally say **Coming soon**, pending the CoRL release. Repl
 ## Content and provenance
 
 - Title, authors, method, main results, component ablations, and limitations: `main_camera_ready.tex` and `sections_camera_ready/` in the supplied paper repository.
+- The TL;DR follows the category-constrained data densification method in Sections IV–V: reconstruct real food instances, vary geometry, appearance, and material properties, and adapt successful cutting motions in differentiable simulation. Generalization is to unseen instances within the same food category, as evaluated in Section VI.
 - Main comparison: 25 trials per food, four foods, 100 trials per training regime. Sim-only / Real-only / Sim+Real success is 34 / 31 / 50 percent. The 63 percent result belongs to the separate scaling experiment with 300 simulated episodes.
 - Scaling results: `tabs/scaling.tex`. Multi-cut results: `sections_camera_ready/6_experiments.tex`.
 - Figures are web-optimized renderings of the supplied `teaser_v4.pdf`, `pipeline_new_v7.pdf`, `data_augmentation_v2.pdf`, `domain.pdf`, `tactile_v4.pdf`, and `multi_cuts_quali.pdf`.
@@ -30,4 +31,4 @@ The layout is independently implemented in the academic project-page style of [N
 
 ## Behavior
 
-Responsive layout; user-controlled, muted demonstration loops; reduced-motion support; lazy-loaded figures with keyboard-accessible enlargement; full video with chapter navigation; metric/food result controls; complete static result table. The title follows the video's two-line opening card, with the red italic project name inline. Authors link to identified personal or institutional webpages, with research-profile links where no personal homepage was found. Names without an identified page remain plain text. The main research content and video controls also work without JavaScript.
+Responsive layout; user-controlled, muted demonstration loops; reduced-motion support; lazy-loaded figures with keyboard-accessible enlargement; full video with chapter navigation; metric/food result controls; complete static result table. The full presentation appears directly beneath the author information and Paper/Code buttons, followed by the TL;DR and demonstration clips. The title follows the video's two-line opening card, with the red italic project name inline. Authors link to identified personal or institutional webpages, with research-profile links where no personal homepage was found. Names without an identified page remain plain text. The main research content and video controls also work without JavaScript.
