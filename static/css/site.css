@@ -78,16 +78,9 @@ sup {
   text-align:center;
   max-width:850px;
   margin:0 auto 36px}
-.section-heading p:not(.eyebrow) {
+.section-heading p {
   color:var(--muted);
   margin-top:14px}
-.eyebrow {
-  font-size:.8rem;
-  font-weight:650;
-  text-transform:uppercase;
-  letter-spacing:.1em;
-  color:var(--blue);
-  margin-bottom:12px}
 .hero {
   text-align:center;
   padding:54px 0 25px}
@@ -280,12 +273,6 @@ h1 {
   grid-template-columns:repeat(3,1fr);
   gap:35px;
   margin-top:38px}
-.stage-number {
-  display:inline-block;
-  font-size:.8rem;
-  font-weight:700;
-  color:var(--blue);
-  margin-bottom:9px}
 .stages p {
   font-size:.95rem;
   margin-top:12px;
@@ -696,7 +683,7 @@ h2 {
   text-align:left}
 .section-heading {
   margin-bottom:26px}
-.section-heading p:not(.eyebrow) {
+.section-heading p {
   font-size:.95rem}
 .video-chapters {
   gap:0;
@@ -710,13 +697,6 @@ h2 {
   grid-template-columns:1fr;
   gap:24px;
   margin-top:28px}
-.stages article {
-  padding-left:37px;
-  position:relative}
-.stage-number {
-  position:absolute;
-  left:0;
-  top:2px}
 .stages p {
   margin-top:8px}
 .two-column {

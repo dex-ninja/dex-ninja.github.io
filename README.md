@@ -19,6 +19,7 @@ Paper and code intentionally say **Coming soon**, pending the CoRL release. Repl
 ## Content and provenance
 
 - Title, authors, method, main results, component ablations, and limitations: `main_camera_ready.tex` and `sections_camera_ready/` in the supplied paper repository.
+- Section and subsection headings use the manuscript's wording, including the relevant supplementary headings for simulation, training, and additional experiments.
 - The TL;DR follows the category-constrained data densification method in Sections IV–V: reconstruct real food instances, vary geometry, appearance, and material properties, and adapt successful cutting motions in differentiable simulation. Generalization is to unseen instances within the same food category, as evaluated in Section VI.
 - Main comparison: 25 trials per food, four foods, 100 trials per training regime. Sim-only / Real-only / Sim+Real success is 34 / 31 / 50 percent. The 63 percent result belongs to the separate scaling experiment with 300 simulated episodes.
 - Scaling results: `tabs/scaling.tex`. Multi-cut results: `sections_camera_ready/6_experiments.tex`.
