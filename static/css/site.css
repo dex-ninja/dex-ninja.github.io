@@ -165,14 +165,6 @@ h1 {
   font-size:.72rem;
   border-left:1px solid #c6cbd0;
   padding-left:9px}
-.section-nav {
-  display:flex;
-  justify-content:center;
-  gap:28px;
-  margin-top:19px;
-  font-size:.88rem}
-.section-nav a {
-  color:var(--muted)}
 .lead-video {
   padding-bottom:28px}
 .teaser {
@@ -661,8 +653,6 @@ h2 {
   padding-left:7px}
 .resource svg {
   width:16px}
-.section-nav {
-  margin-top:18px}
 .teaser {
   padding-top:12px}
 .tldr {
