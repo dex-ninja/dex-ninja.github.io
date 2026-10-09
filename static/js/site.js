@@ -88,22 +88,3 @@ figureDialog.addEventListener('click', event => {
   const bounds = figureDialog.getBoundingClientRect();
   if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) figureDialog.close();
 });
-
-const copyButton = document.querySelector('#copy-citation');
-copyButton.hidden = false;
-copyButton.addEventListener('click', async () => {
-  const citation = document.querySelector('#bibtex').textContent;
-  try {
-    await navigator.clipboard.writeText(citation);
-    copyButton.textContent = 'Copied';
-    document.querySelector('#copy-status').textContent = 'Citation copied to clipboard.';
-    setTimeout(() => { copyButton.textContent = 'Copy citation'; }, 2000);
-  } catch {
-    const selection = window.getSelection();
-    const range = document.createRange();
-    range.selectNodeContents(document.querySelector('#bibtex'));
-    selection.removeAllRanges(); selection.addRange(range);
-    copyButton.textContent = 'Citation selected';
-    document.querySelector('#copy-status').textContent = 'Citation selected. Use your browser’s copy command.';
-  }
-});

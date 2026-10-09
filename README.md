@@ -14,7 +14,7 @@ Open http://localhost:8000. No build tool or package installation is required. F
 
 ## Release links
 
-Paper and code intentionally say **Coming soon**, pending the CoRL release. Replace the two `.resource.unavailable` spans in `index.html` with links when the authors are ready. No manuscript PDF or private source code is included.
+Paper and code intentionally say **Coming soon**, pending the CoRL release. Replace the two `.resource.unavailable` spans in `index.html` with links when the authors are ready. No manuscript PDF or private source code is included. BibTeX is intentionally omitted until the authors are ready to add it.
 
 ## Content and provenance
 
@@ -30,4 +30,4 @@ The layout is independently implemented in the academic project-page style of [N
 
 ## Behavior
 
-Responsive layout; user-controlled, muted demonstration loops; reduced-motion support; lazy-loaded figures with keyboard-accessible enlargement; full video with chapter navigation; metric/food result controls; complete static result table; copyable BibTeX. The main research content and video controls also work without JavaScript.
+Responsive layout; user-controlled, muted demonstration loops; reduced-motion support; lazy-loaded figures with keyboard-accessible enlargement; full video with chapter navigation; metric/food result controls; complete static result table. The title follows the video's two-line opening card, with the red italic project name inline. Authors link to identified personal or institutional webpages, with research-profile links where no personal homepage was found. Names without an identified page remain plain text. The main research content and video controls also work without JavaScript.
