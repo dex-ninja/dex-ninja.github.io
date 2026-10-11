@@ -14,7 +14,7 @@ Open http://localhost:8000. No build tool or package installation is required. F
 
 ## Release links
 
-Paper and code intentionally say **Coming soon**, pending the CoRL release. Replace the two `.resource.unavailable` spans in `index.html` with links when the authors are ready. No manuscript PDF or private source code is included. BibTeX is intentionally omitted until the authors are ready to add it.
+Paper and code intentionally say **Coming soon**, pending the CoRL release. Replace the two `.resource.unavailable` spans in `index.html` with links when the authors are ready. No manuscript PDF or private source code is included. The BibTeX section cites CoRL 2026 using the manuscript's title and author order, with the project page as its URL.
 
 ## Content and provenance
 

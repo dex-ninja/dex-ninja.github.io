@@ -508,6 +508,18 @@ tbody th {
   width:100%;
   font-size:.82rem;
   color:var(--muted)}
+.bibtex {
+  margin:0;
+  padding:24px;
+  background:var(--soft);
+  border:1px solid var(--line);
+  border-radius:8px;
+  font-size:.85rem;
+  line-height:1.7;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere}
+.bibtex code {
+  font-family:ui-monospace,SFMono-Regular,Consolas,'Liberation Mono',monospace}
 footer {
   background:var(--soft);
   padding:34px 0;
@@ -652,6 +664,9 @@ h2 {
 .tldr {
   padding:20px;
   font-size:1rem}
+.bibtex {
+  padding:18px;
+  white-space:pre-line}
 .demo-grid {
   grid-template-columns:1fr 1fr;
   gap:20px 12px}
