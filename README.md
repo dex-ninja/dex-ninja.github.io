@@ -14,7 +14,7 @@ Open http://localhost:8000. No build tool or package installation is required. F
 
 ## Release links
 
-Paper and code intentionally say **Coming soon**, pending the CoRL release. Replace the two `.resource.unavailable` spans in `index.html` with links when the authors are ready. No manuscript PDF or private source code is included. The BibTeX section cites CoRL 2026 using the manuscript's title and author order.
+The **arXiv** button links to [the paper](https://arxiv.org/abs/2610.17208). Code intentionally says **Coming soon**; replace its `.resource.unavailable` span in `index.html` with a link when the authors are ready. No manuscript PDF or private source code is included. The BibTeX section cites CoRL 2026 using the manuscript's title and author order.
 
 ## Content and provenance
 
@@ -32,4 +32,4 @@ The layout is independently implemented in the academic project-page style of [N
 
 ## Behavior
 
-Responsive layout; muted demonstration loops that play when visible; reduced-motion support with native playback controls; lazy-loaded figures with keyboard-accessible enlargement; full video with chapter navigation; metric/food result controls; complete static result table. The full presentation appears directly beneath the author information and Paper/Code buttons, followed by the TL;DR and demonstration clips. The title follows the video's two-line opening card, with the red italic project name inline. Authors link to identified personal or institutional webpages, with research-profile links where no personal homepage was found. Names without an identified page remain plain text. The main research content and video controls also work without JavaScript.
+Responsive layout; muted demonstration loops that play when visible; reduced-motion support with native playback controls; lazy-loaded figures with keyboard-accessible enlargement; full video with chapter navigation; metric/food result controls; complete static result table. The full presentation appears directly beneath the author information and arXiv/Code buttons, followed by the TL;DR and demonstration clips. The title follows the video's two-line opening card, with the red italic project name inline. Authors link to identified personal or institutional webpages, with research-profile links where no personal homepage was found. Names without an identified page remain plain text. The main research content and video controls also work without JavaScript.
