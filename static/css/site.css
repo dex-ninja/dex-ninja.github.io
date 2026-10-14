@@ -279,6 +279,49 @@ h1 {
 .text-and-figure p {
   margin-top:15px;
   font-size:.96rem}
+.dataset-card {
+  display:flex;
+  align-items:center;
+  gap:18px;
+  max-width:820px;
+  margin:32px auto 0;
+  padding:22px 24px;
+  color:var(--ink);
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:12px;
+  box-shadow:0 4px 18px rgb(30 45 65 / 7%)}
+.dataset-card:hover {
+  border-color:var(--blue);
+  text-decoration:none}
+.dataset-card svg {
+  flex-shrink:0;
+  fill:none;
+  stroke:var(--blue);
+  stroke-width:1.7;
+  stroke-linecap:round;
+  stroke-linejoin:round}
+.dataset-icon {
+  width:48px;
+  height:48px;
+  padding:11px;
+  background:var(--blue-light);
+  border-radius:10px}
+.dataset-card-text {
+  display:flex;
+  flex:1;
+  min-width:0;
+  flex-direction:column;
+  gap:3px}
+.dataset-card-text strong {
+  font-size:1.08rem;
+  font-weight:650}
+.dataset-card-text>span {
+  color:var(--muted);
+  font-size:.88rem}
+.dataset-arrow {
+  width:22px;
+  height:22px}
 .horizon-row {
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -667,6 +710,13 @@ h2 {
 .bibtex {
   padding:18px;
   white-space:pre-line}
+.dataset-card {
+  gap:12px;
+  padding:18px}
+.dataset-icon {
+  width:40px;
+  height:40px;
+  padding:8px}
 .demo-grid {
   grid-template-columns:1fr 1fr;
   gap:20px 12px}

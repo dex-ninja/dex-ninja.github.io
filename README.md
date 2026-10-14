@@ -16,6 +16,8 @@ Open http://localhost:8000. No build tool or package installation is required. F
 
 The **arXiv** button links to [the paper](https://arxiv.org/abs/2610.17208). Code intentionally says **Coming soon**; replace its `.resource.unavailable` span in `index.html` with a link when the authors are ready. No manuscript PDF or private source code is included. The BibTeX section cites CoRL 2026 using the manuscript's title and author order.
 
+The **Simulated Assets** dataset card in the data augmentation section links to [DexNinja's dataset on Hugging Face](https://huggingface.co/datasets/DexNinja/DexNinja_Simulated_Assets).
+
 ## Content and provenance
 
 - Title, authors, method, main results, component ablations, and limitations: `main_camera_ready.tex` and `sections_camera_ready/` in the supplied paper repository.
